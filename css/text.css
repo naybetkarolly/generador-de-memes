@@ -1,0 +1,31 @@
+textarea {
+    padding: 5px;
+    margin: 5px 0;
+    font-family: 'Open Sans', sans-serif;
+}
+.input-fuente {
+    padding: 10px;
+    margin: 7px 0;
+    outline: none;
+    width: 50%;
+    margin: 0;
+    margin-right: 5px;
+}
+.btn-fuente {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+.btn-fuente button {
+    width: calc(100% / 3 - 10px / 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.border-options button {
+    padding: 8px;
+    border-radius: 3px;
+    border: 0;    
+}
+
+

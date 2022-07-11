@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de memes</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.pinimg.com/564x/00/89/0d/00890d3371a5895d93e3bc697129eefe.jpg">
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/text.css" />
+    <script src="https://kit.fontawesome.com/4df7e684b7.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body class="dark"> 
+    <main class="main"> 
+      <header class="main-header"> 
+        <h1 class="title">Generador de Memes</h1> 
+        <!------BOTONES IMG, TXT, TEMA------>
+        <nav> 
+          <button aria-label="Abrir editor de imagen" id="btn-img-aside" class="button-nav"> 
+            <i aria-hidden= "true" class="fas fa-image"><span class="nav-icon">Imagen</span></i> 
+          </button> 
+          <button aria-label="Abrir editor de texto" id="btn-txt-aside" class="button-nav"> 
+            <i aria-hidden= "true" class="fas fa-font"><span class="nav-icon">Texto</span></i> 
+          </button> 
+          <button aria-label="Cambiar tema" id="btn-theme" class="button-nav"> 
+            <i aria-hidden= "true" class="fas fa-lightbulb" 
+              ><span id="text-theme" class="nav-icon">Modo claro </span></i 
+            > 
+          </button> 
+        </nav> 
+      </header> 
+      <!------CENTRO IMAGEN MEME------>
+      <section class="main-body">
+        <!------CONTENEDOR TEXTO TOP Y BOTTOM------>
+        <div class="wrapper">
+          <div title="Texto superior del meme" class="top-text" id="textFontTop">
+            <p aria-hidden= "true">TOP TEXT</p>
+          </div>
+          <div title="Imagen del meme" class="image"></div>
+          <div title="Texto superior del meme" class="bottom-text" id="textFontBottom">
+            <p aria-hidden= "true">BOTTOM TEXT</p>
+          </div>
+        </div>
+        <!------BOTON DESCARGA------>
+        <div class="download">
+          <button id="download-btn">
+            <i aria-hidden= "true" class="fas fa-download"></i> Descargar meme
+          </button>
+        </div>
+      </section>
+    </main>
+      <!-- ----------IMAGEN PANNEL-------------->
+    <aside class="aside">
+      <!-- ----------CERRAR PANNEL-------------->
+      <i aria-label="Cerrar panel" id="close-aside" class="close-aside fas fa-times"></i>
+      <!-- ----------CONTENEDOR DE PROPIEDADES IMAGEN PANNEL-------------->
+      <div class="aside-img">      
+        <h2>IMAGEN</h2>cont-input
+        <!-- ----------IMAGEN FORM PANNEL-------------->
+        <form id="imageForm">
+          <div class="flex-column">
+            <label class="bold-text" for="url">URL</label>
+            <input class="input-style"
+              id="url"
+              type="url"
+              placeholder="Ingresá el url de una imagen">
+            <imput/>
+          </div>
+          <label  class="bold-text" for="img-color">FONDO</label>
+          <!-- ----------CONTENEDOR COLOR DE FONDO Y FILTRO PARA EL COLOR IMAGEN PANNEL-------------->
+          <div class="flex space-between space-background">
+            <div id="cont-input" class="cont-input-color">
+              <input
+                aria-label= "Elegí un color de fondo"
+                class="background-input"
+                id="img-color"
+                type="color"
+                value="#191E2B"
+              />
+              <span
+                class="text-background-color"
+                id="text-input-color"
+                for="img-color"
+                >#191E2B
+              </span>
+            </div>
+            <select title= "Elegí un filtro para el color" class="input-style" name="" id="options-filter-bg">
+              <option value="unset">Ninguno</option>
+              <option value="lighten">Aclarar</option>
+              <option value="darken">Oscurecer</option>
+              <option value="difference">Diferencia</option>
+              <option value="luminosity">Luminosidad</option>
+              <option value="multiply">Multiplicar</option>
+            </select>
+          </div>
+          <!-- ---------- RANGO PARA FILTRO DE IMAGEN PANNEL-------------->
+          <h4 class="bold-text">FILTROS</h4>
+          <div title= "Elegí un filtro" class="flex-column space">
+            <label for="brightness">Brillo</label>
+            <input
+              aria-label= "Rango para brillo" 
+              class="input-range"
+              id="brightness"
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="1"
+              aria-valuemin="0"
+              aria-valuemax= "1"
+              aria-valuenow= "1"
+            />
+            <label for="opacity">Opacidad</label>
+            <input
+              aria-label= "Rango para opacidad"
+              class="input-range"
+              id="opacity"
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="1"
+              aria-valuemin="0"
+              aria-valuemax= "1"
+              aria-valuenow= "1"
+            />
+            <label for="contrast">Contraste</label>
+            <input
+              aria-label= "Rango para contraste"
+              class="input-range"
+              id="contrast"
+              type="range"
+              min="100"
+              max="1000"
+              step="1"
+              value="100"
+              aria-valuemin="100"
+              aria-valuemax= "1000"
+              aria-valuenow= "100"
+            />
+            <label for="blur">Desenfoque</label>
+            <input
+              aria-label= "Rango para desenfoque"
+              class="input-range"
+              id="blur"
+              type="range"
+              min="0"
+              max="10"
+              step="0.1"
+              value="0"
+              aria-valuemin="0"
+              aria-valuemax= "10"
+              aria-valuenow= "0"
+            />
+            <label for="grayscale">Escala de grises</label>
+            <input
+              aria-label= "Rango para escala de grises"
+              class="input-range"
+              id="grayscale"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value="0"
+              aria-valuemin="0"
+              aria-valuemax= "100"
+              aria-valuenow= "0"
+            />
+            <label for="sepia">Sepia</label>
+            <input
+              aria-label= "Rango para sepia"
+              class="input-range"
+              id="sepia"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value="0"
+              aria-valuemin="0"
+              aria-valuemax= "100"
+              aria-valuenow= "0"
+            />
+            <label for="hue">Hue</label>
+            <input
+              aria-label= "Rango para hue"
+              class="input-range"
+              id="hue"
+              type="range"
+              min="0"
+              max="359"
+              step="1"
+              value="0"
+              aria-valuemin="0"
+              aria-valuemax= "359"
+              aria-valuenow= "0"
+            />
+            <label for="saturate">Saturado</label>
+            <input
+              aria-label= "Rango para saturación"
+              class="input-range"
+              id="saturate"
+              type="range"
+              min="100"
+              max="1000"
+              step="10"
+              value="100"
+              aria-valuemin="100"
+              aria-valuemax= "1000"
+              aria-valuenow= "100"
+            />
+            <label for="invert">Negativo</label>
+            <input
+              aria-label= "Rango para negativo"
+              class="input-range"
+              id="invert"
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0"
+              aria-valuemin="0"
+              aria-valuemax= "1"
+              aria-valuenow= "0"
+            />
+            <!-- ----------RESTABLECER FILTROS IMAGEN PANNEL-------------->
+            <button class="input-style button" id="reset-btn">
+              Restablecer filtros
+            </button>
+          </div>
+        </form>
+      </div>
+      <!------------TEXTO PANNEL-------------->
+      <div class="aside-txt hidden">
+        <h2>TEXTO</h2>
+        <!------TEXT AREA SUPERIOR Y CHECK PARA ELIMINAR TXT TOP------>
+        <div class="superior flex-column mb-20px"> 
+          <label class="bold-text" for="top-text">SUPERIOR</label> 
+          <textarea 
+            aria-label="Ingresa el texto superior del meme" 
+            class="input-style" 
+            type="text" 
+            id="top-text" 
+            placeholder="TOP TEXT" 
+          ></textarea> 
+          <div> 
+            <input aria-label="Eliminar texto superior" id="check-top-text" type="checkbox" /> 
+            <label for="check-top-text" class="text-check" 
+              >Sin texto superior</label 
+            > 
+          </div> 
+        </div> 
+        <!------TEXT AREA INFERIOR Y CHECK PARA ELIMINAR TXT BOTTOM------>
+        <div class="inferior flex-column mb-20px">
+          <label class="bold-text" for="bottom-text">INFERIOR</label>
+          <textarea
+            aria-label="Ingresa el texto inferior del meme"
+            class="input-style"
+            name=""
+            type="text"
+            id="bottom-text"
+            placeholder="BOTTOM TEXT"
+          ></textarea>
+          <div>
+            <input aria-label="Eliminar texto inferior" id="check-bottom-text" type="checkbox" />
+            <label for="check-bottom-text" class="text-check"
+              >Sin texto inferior</label
+            >
+          </div>
+        </div>
+        <!------FUENTES------>
+        <div class="fuente flex-column mb-20px">
+          <label aria-label="Elegí una fuente para el texto" class="bold-text" for="optionTextFont">FUENTE<label>
+          <select class="input-style" id="optionTextFont" name="idFonts">
+            <option value="Arial">Arial</option>
+            <option value="Arial Black">Arial Black</option>
+            <option value="American Typewriter">American Typewriter</option>
+            <option value="Courier New Black">Andale Mono</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Impact">Impact</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Times New Roman">Times New Roman</option>
+          </select>
+          <!------TAMAÑO DE FUENTE------>
+          <div class="option-text flex">
+            <input
+              aria-label="Elegí el tamaño de la fuente"
+              class="input-fuente input-style"
+              id="fontSize"
+              type="number"
+              value="50"
+              min="12"
+              max="90"
+              aria-valuemin="12"
+              aria-valuemax= "90"
+            />
+            <!------ALINEACION------>
+            <div class="btn-fuente">
+              <button aria-label="Alinear texto a la izquierda" class="center button" id="btn-left">
+                <i aria-hidden="true"  class="fas fa-align-left color"></i>
+              </button>
+              <button aria-label="Alinear texto al centro" class="center button" id="btn-center">
+                <i aria-hidden="true" class="fas fa-align-center color"></i>
+              </button>
+              <button aria-label="Alinear texto a la derecha" class="center button" id="btn-right">
+                <i aria-hidden="true" class="fas fa-align-right color"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!------COLOR DE TEXTO------>
+        <div class="flex-column mb-20px"> 
+          <div class="color-background-container flex space-background"> 
+            <div class="flex-column half-space"> 
+              <label for="text-color" class="bold-text">COLOR</label> 
+              <div id="color-input" class="cont-input-color">  
+                <input 
+                  aria-label="Color del texto" 
+                  class="background-input" 
+                  type="color" 
+                  id="text-color"
+                  value="#191E2B"
+                  aria-valuenow="#191E2B"
+                />
+                <span
+                  class="text-background-color"
+                  id="text-color-hex"
+                  aria-hidden= "true"
+                  >#191E2B</span
+                >
+              </div>
+            </div>
+            <!------COLOR DE FONDO------>
+            <div class="flex-column half-space">
+              <label class="bold-text" for="text-background">FONDO</label>
+              <div id="background-input" class="cont-input-color">
+                <input
+                  aria-label="Color de fondo del texto"
+                  class="background-input"
+                  type="color"
+                  id="text-background"
+                  value="#191E2B"
+                  aria-valuenow="#191E2B"
+                />
+                <span
+                  class="text-background-color"
+                  id="text-background-hex"
+                  aria-hidden= "true"
+                  >#191E2B</span
+                >
+              </div>
+            </div>
+          </div>
+          <!------FONDO TRANSPARENTE------>
+          <div>
+            <input type="checkbox" id="checkbox-transparent" />
+            <label for="checkbox-transparent" class="text-check"
+              >Fondo transparente </label>
+          </div>
+        </div>
+        <!------DISEÑO DE TEXTO------>
+        <div class="border-container mb-20px">
+          <h4 class="bold-text">CONTORNO</h4>
+          <div class="border-options mt-5px">
+            <button
+              aria-label="Sin contorno de texto"
+              class="input-style button"
+              type="button"
+              id="text-shadow-none"
+            >
+              Ninguno
+            </button>
+            <button
+              aria-label="Contorno de texto claro"
+              class="input-style button"
+              type="button"
+              id="text-shadow-light"
+            >
+              Claro
+            </button>
+            <button
+              aria-label="Contorno de texto oscuro"
+              class="input-style button"
+              type="button"
+              id="text-shadow-dark"
+            >
+              Oscuro
+            </button>
+          </div>
+        </div>
+        <!------ESPACIADO------>
+        <div class="line-container flex-column mb-20px">
+          <label class="bold-text" for="padding-text">ESPACIADO</label>
+          <input
+            class="input-style"
+            type="number"
+            id="padding-text"
+            min="20"
+            max="50"
+            aria-valuemin="20"
+            aria-valuemax= "50"
+          />
+        </div>
+        <!------INTERLINEADO------>
+        <div class="space-container flex-column mb-20px">
+          <label class="bold-text" for="line-height">INTERLINEADO</label>
+          <select class="input-style" name="" id="line-height">
+            <option value="0.8">0.8</option>
+            <option value="1">1</option>
+            <option value="1.2">1.2</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+            <option value="2.5">2.5</option>
+          </select>
+        </div>
+      </div>
+    </aside>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+        integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"
+        integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/img.js"></script>
+    <script src="./js/txt.js"></script>
+  </body>
+</html>
